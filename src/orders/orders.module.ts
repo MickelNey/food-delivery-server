@@ -8,6 +8,7 @@ import {OrdersProducts} from "../orders_products/orders_products.model";
 import {ProductsModule} from "../products/products.module";
 import {User} from "../users/users.model";
 import {OrdersProductsModule} from "../orders_products/orders_products.module";
+import {AuthModule} from "../auth/auth.module";
 
 @Module({
   providers: [OrdersService],
@@ -15,7 +16,8 @@ import {OrdersProductsModule} from "../orders_products/orders_products.module";
   imports: [
     SequelizeModule.forFeature([Product, Order, OrdersProducts, User]),
     ProductsModule,
-    OrdersProductsModule
+    OrdersProductsModule,
+    AuthModule
   ],
   exports: [
     OrdersService

@@ -5,12 +5,11 @@ import {Order} from "./orders.model";
 import {CreateOrderDto} from "./dto/create-order.dto";
 import {ChangeStatusDto} from "./dto/change-status.dto";
 import {OrdersProductsService} from "../orders_products/orders_products.service";
-import {Op, QueryTypes} from "sequelize";
+import {QueryTypes} from "sequelize";
 import {getProfitDto} from "./dto/get-profit.dto";
 
 @Injectable()
 export class OrdersService {
-
   constructor(
     @InjectModel(Order) private orderRepository: typeof Order,
     private productService: ProductsService,

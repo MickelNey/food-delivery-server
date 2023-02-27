@@ -9,6 +9,7 @@ import {FilesModule} from "../files/files.module";
 import {ProductsCategories} from "../categories/products-categories.model";
 import {Category} from "../categories/categories.model";
 import {CategoriesModule} from "../categories/categories.module";
+import {AuthModule} from "../auth/auth.module";
 
 @Module({
   providers: [ProductsService],
@@ -16,7 +17,8 @@ import {CategoriesModule} from "../categories/categories.module";
   imports: [
     SequelizeModule.forFeature([Product, Order, Category, OrdersProducts, ProductsCategories]),
     FilesModule,
-    CategoriesModule
+    CategoriesModule,
+    AuthModule
   ],
   exports: [
     ProductsService

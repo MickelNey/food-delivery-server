@@ -1,7 +1,9 @@
-import {Body, Controller, Get, Param, Post, UploadedFile, UseInterceptors} from '@nestjs/common';
+import {Body, Controller, Get, Param, Post, UploadedFile, UseGuards, UseInterceptors} from '@nestjs/common';
 import {FileInterceptor} from "@nestjs/platform-express";
 import {CategoriesService} from "./categories.service";
 import {CreateCategoryDto} from "./dto/create-category.dto";
+import {Roles} from "../auth/roles-auth.decorator";
+import {RolesGuard} from "../auth/roles.guard";
 
 @Controller('categories')
 export class CategoriesController {
@@ -12,8 +14,9 @@ export class CategoriesController {
   getAll() {
     return this.categoryService.getAllCategories()
   }
-
-
+  
+  @Roles("SELLER")
+  @UseGuards(RolesGuard)
   @Post()
   @UseInterceptors(FileInterceptor('image'))
   create(@Body() categoryDto: CreateCategoryDto,
